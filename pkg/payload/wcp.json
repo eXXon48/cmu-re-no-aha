@@ -1,0 +1,53 @@
+{
+ "ops": [
+  {
+   "set": {
+    "xpath": "//service[@name='blm_ira_aha']/@autorun",
+    "value": "no",
+    "reason": "Aha shut down; the service only costs boot time"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='blm_ira_aha']/@reset_board",
+    "value": "no",
+    "reason": "turned off: if anything still starts it and it fails, it must not reset the head unit"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='stage_wifi']/dependency[@value='blm_ira_aha']/@value",
+    "value": "stage_ir",
+    "reason": "waited for Aha only as an 'after the IR stage' marker; stage_ir is that stage"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='stage_vr']/dependency[@value='blm_ira_aha']/@value",
+    "value": "stage_ir",
+    "reason": "waited for Aha only as an 'after the IR stage' marker; stage_ir is that stage"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='stage_gap2']/dependency[@value='blm_ira_aha']/@value",
+    "value": "stage_ir",
+    "reason": "waited for Aha only as an 'after the IR stage' marker; stage_ir is that stage"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='offboard_service']/@autorun",
+    "value": "no",
+    "reason": "OffBoard manager; its only client is Aha (blm_ira_aha), which is off; it only costs boot time"
+   }
+  },
+  {
+   "set": {
+    "xpath": "//service[@name='offboard_service']/@reset_board",
+    "value": "no",
+    "reason": "turned off: if anything still starts it and it fails, it must not reset the head unit"
+   }
+  }
+ ]
+}
